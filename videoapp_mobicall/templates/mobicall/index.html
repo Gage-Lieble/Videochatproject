@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    My video call project
+    <form id="form">
+        
+        <div class='form-field'>
+            <input type="text" name="room" placeholder="Enter Room Name" style="text-transform: uppercase;">
+        </div>
+
+        <div class='form-field'>
+            <input type="text" name="username" placeholder="Your Name">
+        </div>
+
+        <div class='form-field'>
+            <input type="submit" value="Enter Room">
+        </div>
+    </form>
+    
+    
+    <script type="text/javascript">
+        let form = document.getElementById('form')
+    
+        let handleSubmit = async (e) => {
+            e.preventDefault()
+            let room = e.target.room.value.toUpperCase()
+            let name = e.target.username.value
+    
+            let response = await fetch(`/gettoken/?channel=${room}`)
+            let data = await response.json()
+            let UID = data.uid
+            let token = data.token
+    
+            sessionStorage.setItem('UID', UID)
+            sessionStorage.setItem('token', token)
+            sessionStorage.setItem('room', room)
+            sessionStorage.setItem('name', name)
+            window.open('/room/', '_self')
+        }
+
+        form.addEventListener('submit', handleSubmit)
+    </script>
+</body>
+
+</html>
