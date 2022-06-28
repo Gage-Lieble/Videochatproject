@@ -5,24 +5,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mobeecall - Join Room</title>
+    <link rel="icon" href="{% static 'images/beefavicon.svg' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body>
-    My video call project
+<body id="home-body">
     <form id="form">
+        <div id="brand-wrap"><img class="beelogo" src="{% static 'images/beelogo.svg' %}" alt=""><h1>Mobeecall</h1></div>
         
         <div class='form-field'>
-            <input type="text" name="room" placeholder="Enter Room Name" style="text-transform: uppercase;" maxlength="25" required>
+            <input type="text" name="room" placeholder="Mobee-Room Name" style="text-transform: uppercase;" maxlength="25" required>
         </div>
 
         <div class='form-field'>
-            <input type="text" name="username" placeholder="Your Name" maxlength="60" required>
+            <input type="text" name="username" placeholder="YOUR NAME" maxlength="60" required>
         </div>
 
         <div class='form-field'>
             <input type="submit" value="Enter Room">
         </div>
+
+        <a class="gagecom" href="https://www.gagelieble.com/">Gagelieble.com</a>
     </form>
     
     

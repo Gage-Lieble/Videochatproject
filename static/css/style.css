@@ -3,6 +3,7 @@ body {
     padding: 0px;
     margin: 0px;
 }
+
 #main-cont{
     display: flex;
     flex-direction: column;
@@ -75,7 +76,9 @@ body {
     z-index: 100;
     margin: 0px;
 }
-
+.control-img:hover{
+    background-color: #d19824;
+}
 #room-name{
     color: white;
     font-family: 'futura';
@@ -92,6 +95,78 @@ body {
    
     
 }
+
+#home-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#form{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px;
+    background-color: #131313;
+    border-radius: 10px;
+    
+    
+}
+.form-field{
+    padding: 15px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    
+}
+
+.form-field>input{
+    padding: 15px;
+    border-radius: 50px;
+    border: none;
+    width: 100%;
+    font-family: 'futura';
+    
+}
+
+.form-field>input[type=submit]{
+    background-color: #FFC045;
+    width: 50%;
+}
+
+input[type=submit]:hover{
+    background-color: #d19824;
+}
+.gagecom{
+    font-family: 'futura';
+    margin-top: 25px;
+    color: white;
+}
+
+.beelogo{
+    width: 100px;
+}
+
+#brand-wrap{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+#brand-wrap>h1{
+    color: white;
+    font-family: 'futura';
+    font-size: 50px;
+}
+
+
 
 
 /* RECORING ON ANIMATION */
