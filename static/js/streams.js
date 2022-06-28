@@ -14,7 +14,9 @@ let remoteUsers = {} // Stores remote users
 
 
 let joinAndDisplayLocalStream = async () => {
+    
     document.getElementById('room-name').innerText = CHANNEL
+    document.querySelector('title').innerText = `${CHANNEL.charAt(0).toUpperCase() + CHANNEL.toLowerCase().slice(1)} - Mobeecall`
     client.on('user-published', handleUserJoined)
     client.on('user-left', handleUserLeft)
     try{
@@ -30,7 +32,9 @@ let joinAndDisplayLocalStream = async () => {
     let member = await createMember()
     let player = `<div class="video-cont" id="user-cont-${UID}">
                         <div class="username-wrap"><span class="username">${member.name}</span></div>
-                        <div class="video-player" id="user-${UID}"></div>
+                        <div class="video-player" id="user-${UID}"><div id="pulse-wrapper">
+                        <div class="pulse"></div>  
+                    </div></div>
                     </div>`
 
     document.getElementById('video-streams').insertAdjacentHTML('beforeend', player) // Adds player to template
@@ -43,6 +47,7 @@ let joinAndDisplayLocalStream = async () => {
 
 
 let handleUserJoined = async (user, mediaType) => {
+
     remoteUsers[user.uid] = user // Targets user in remote user object 
     await client.subscribe(user, mediaType) // waits for use to 'connect'
 
@@ -58,7 +63,7 @@ let handleUserJoined = async (user, mediaType) => {
         // Creates new player
         player = `<div class="video-cont" id="user-cont-${user.uid}">
                         <div class="username-wrap"><span class="username">${member.name}</span></div>
-                        <div class="video-player" id="user-${user.uid}"></div>
+                        <div class="video-player" id="user-${user.uid}">
                     </div>`
         document.getElementById('video-streams').insertAdjacentHTML('beforeend', player) 
 
@@ -102,10 +107,12 @@ let toggleMic = async (e) => {
     if (localTracks[0].muted){
         await localTracks[0].setMuted(false)
         document.getElementById('mic-toggle').innerHTML = `<img class="control-img" src='/static/images/micon.svg'>`
+        document.getElementById('pulse-wrapper').style.display='block'
     }
     else {
         await localTracks[0].setMuted(true)
         document.getElementById('mic-toggle').innerHTML = `<img class="control-img" src='/static/images/micoff.svg'>`
+        document.getElementById('pulse-wrapper').style.display='none'
 
     }
 }
