@@ -90,19 +90,23 @@ let leaveAndRemoveLocalStream = async () => {
 let toggleCam = async (e) => {
     if (localTracks[1].muted){ // Checks if camera is off
         await localTracks[1].setMuted(false) // turns on camera
-        
+        document.getElementById('cam-toggle').innerHTML = `<img class="control-img" src='/static/images/camon.svg'>`
     }
     else { // checks if its on
         await localTracks[1].setMuted(true) // turns off camera
+        document.getElementById('cam-toggle').innerHTML = `<img class="control-img" src='/static/images/camoff.svg'>`
     }
 }
 
 let toggleMic = async (e) => {
     if (localTracks[0].muted){
         await localTracks[0].setMuted(false)
+        document.getElementById('mic-toggle').innerHTML = `<img class="control-img" src='/static/images/micon.svg'>`
     }
     else {
         await localTracks[0].setMuted(true)
+        document.getElementById('mic-toggle').innerHTML = `<img class="control-img" src='/static/images/micoff.svg'>`
+
     }
 }
 
